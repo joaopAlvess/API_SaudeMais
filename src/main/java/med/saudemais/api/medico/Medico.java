@@ -25,4 +25,16 @@ public class Medico {
     private Especialidade especialidade;
     @Embedded           // Vai ter atributos próprios porém irá ficar na mesma tabela que medicos.
     private Endereco endereco;
+
+    public Medico(DadosCadastroMedico data) {
+        this.nome = data.nome();
+        this.email = data.email();
+        this.telefone = data.telefone();
+        this.crm = data.crm();
+        this.especialidade = data.especialidade();
+        this.endereco = new Endereco(data.endereco());
+    }
+
+    // Preciso fazer um contrutor no endereço pois coloquei ele também com DadosEndereço, então ele não está reconhecendo.
+    // MUITO IMPORTANTE! Sempre que precisar criar um contrutor em determinado lugar, precisar definir oque ele possui dentro da classe raiz dele.
 }
