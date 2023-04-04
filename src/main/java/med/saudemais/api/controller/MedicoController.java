@@ -1,9 +1,11 @@
 package med.saudemais.api.controller;
 
+import jakarta.validation.Valid;
 import med.saudemais.api.medico.DadosCadastroMedico;
 import med.saudemais.api.medico.Medico;
 import med.saudemais.api.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,9 @@ public class MedicoController {
     //OBS: Se atentar a métodos e parâmetros.
     // Aqui como estou fazendo um Post para a a web, deve utilizar o @PostMapping, depois dentro do método devo passar um parametro de @Request body, para que o Json seja carregado no terminal, traduzindo ele saiba de onde pegar o Json.
     @PostMapping
-    public void cadastrar(@RequestBody DadosCadastroMedico data) {
+    @Transactional
+         // Vai fazer um transação ativa com o BD //Se atentar e colocar o método do Spring (org.spring)
+    public void cadastrar(@RequestBody @Valid DadosCadastroMedico data) {
         repository.save(new Medico(data));
     }
 
