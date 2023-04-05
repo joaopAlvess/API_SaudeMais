@@ -37,4 +37,20 @@ public class Medico {
 
     // Preciso fazer um contrutor no endereço pois coloquei ele também com DadosEndereço, então ele não está reconhecendo.
     // MUITO IMPORTANTE! Sempre que precisar criar um contrutor em determinado lugar, precisar definir oque ele possui dentro da classe raiz dele.
+
+
+    public void atualizarInformacoes(DadosAtualizaMedico data) {
+        if(data.email() != null) {
+            this.email = data.email();
+        }
+        if (data.telefone() != null) {
+            this.telefone = data.telefone();
+        }
+        if (data.endereco() != null) {
+            this.endereco.atualizarInformacoes(data.endereco());
+        }
+
+    }
+
+
 }
