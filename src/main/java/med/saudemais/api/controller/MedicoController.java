@@ -2,14 +2,14 @@ package med.saudemais.api.controller;
 
 import jakarta.validation.Valid;
 import med.saudemais.api.medico.DadosCadastroMedico;
+import med.saudemais.api.medico.DadosListagemMedicos;
 import med.saudemais.api.medico.Medico;
 import med.saudemais.api.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
@@ -29,4 +29,12 @@ public class MedicoController {
 
     // Utilizando o contrutor dessa maneira fazendo referencia direta com (data) DadosCadastroMédico, ele irá reclamar pois preciso
     //criar uma class dentro de DadosCadastroMedico e definir todos os atributos.
+
+    // Nesse caso estou criando uma nova classe e estou colocando Lista para armazenar as informações devolvidas, o Generics está Instanciando da Classe Medico
+    @GetMapping
+    public List<DadosListagemMedicos> listar() {
+        return repository.findAll().stream().map(DadosListagemMedicos::new).toList();
+    }
+
 }
+
