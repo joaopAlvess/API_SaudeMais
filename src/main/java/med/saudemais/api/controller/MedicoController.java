@@ -6,6 +6,9 @@ import med.saudemais.api.medico.DadosListagemMedicos;
 import med.saudemais.api.medico.Medico;
 import med.saudemais.api.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,9 +34,10 @@ public class MedicoController {
     //criar uma class dentro de DadosCadastroMedico e definir todos os atributos.
 
     // Nesse caso estou criando uma nova classe e estou colocando Lista para armazenar as informações devolvidas, o Generics está Instanciando da Classe Medico
+    // Estou passando como parametro Pageable para definir a quantidade de registro que quero lançar por vez a cada página, pense como um livro, se quero lançar somente 10 registros por página irei definir aqui
     @GetMapping
-    public List<DadosListagemMedicos> listar() {
-        return repository.findAll().stream().map(DadosListagemMedicos::new).toList();
+    public Page<DadosListagemMedicos> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginator) {
+        return repository.findAll(paginator).map(DadosListagemMedicos::new);
     }
 
 }
