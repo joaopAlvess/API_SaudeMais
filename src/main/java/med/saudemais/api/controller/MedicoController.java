@@ -41,7 +41,7 @@ public class MedicoController {
     // Estou passando como parametro Pageable para definir a quantidade de registro que quero lançar por vez a cada página, pense como um livro, se quero lançar somente 10 registros por página irei definir aqui
     @GetMapping
     public Page<DadosListagemMedicos> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginator) {
-        return repository.findAll(paginator).map(DadosListagemMedicos::new);
+        return repository.findAllByAtivoTrue(paginator).map(DadosListagemMedicos::new);
     }
 
     // -------------------------------------------------------------------------------------------------
@@ -54,5 +54,19 @@ public class MedicoController {
         var medico = repository.getReferenceById(data.id());
         medico.atualizarInformacoes(data);
     }
-}
 
+    //Nessa linha do var medico, estou recuperando um medico pelo id dele.
+    // Nessa outra linha estou criando um método para atualizar porém estou definindo e parametrizando esse método em outra Class, que se encontra na Class de Medico.
+
+    // -----------------------------------------------------------------------------------------------------------------------------
+
+    //MÉTODO DELETE
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deletar(@PathVariable Long id) {
+        var medico = repository.getReferenceById(id);
+        medico.excluir();
+    }
+    //Aqui estou passando um paramêtro dinâmico na url, com esse {id} significa que quando a requisição chegar no http://localhost:8080/medicos/ o número passado depois dessa ultima barra será o id do médico retornado.
+}
