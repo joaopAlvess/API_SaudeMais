@@ -8,9 +8,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
-@RequestMapping
+
 public class PacienteController {
 
     @Autowired
@@ -22,19 +24,28 @@ public class PacienteController {
         repository.save(new Paciente(data));
     }
 
+    /*
     @GetMapping
     public Page<RecordDadosListagemPacientes> listar (@PageableDefault(size = 10, sort = {"nome"})Pageable paginator){
         return repository.findAllByAtivoTrue(paginator).map(RecordDadosListagemPacientes::new);
     }
+    */
+
+    @GetMapping
+    public List<RecordDadosListagemPacientes> listar(@PageableDefault(size = 10, sort = {"nome"})Pageable paginator) {
+        return repository.findAll(paginator).map(RecordDadosListagemPacientes::new).toList();
+    }
+
     @PutMapping
     public void atualizar() {
 
     }
 
+    /*
     @DeleteMapping("/{id}")
     public void deletar(PathVariable Long id) {
         var medico = repository.getReferenceById(id);
         medico.deletar();
     }
-
+    */
 }
