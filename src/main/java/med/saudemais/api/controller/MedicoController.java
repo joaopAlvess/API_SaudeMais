@@ -53,6 +53,13 @@ public class MedicoController {
     //Após istanciar o tipo ResponseEntity devo fazer uma mudança, armazenar o repository dentro de uma variavel e depois depois devo retornar um método do ResponseEntity o .ok passando como parametro a variável armazenada.
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity listarUnico(@PathVariable Long id) {
+        var medico = repository.getReferenceById(id);
+        return ResponseEntity.ok(new RecordDadoDetalhamentoMedico(medico));
+    }
+
+
     // -------------------------------------------------------------------------------------------------
 
     //MÉTODO PUT
