@@ -1,4 +1,4 @@
-package med.saudemais.api.endereco;
+package med.saudemais.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

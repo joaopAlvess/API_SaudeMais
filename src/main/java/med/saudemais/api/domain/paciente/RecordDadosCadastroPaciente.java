@@ -1,11 +1,11 @@
-package med.saudemais.api.paciente;
+package med.saudemais.api.domain.paciente;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.saudemais.api.endereco.DadosEndereco;
+import med.saudemais.api.domain.endereco.DadosEndereco;
 
 public record RecordDadosCadastroPaciente(
 

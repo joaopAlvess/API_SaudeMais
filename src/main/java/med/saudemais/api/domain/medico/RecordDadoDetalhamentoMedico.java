@@ -1,6 +1,6 @@
-package med.saudemais.api.medico;
+package med.saudemais.api.domain.medico;
 
-import med.saudemais.api.endereco.Endereco;
+import med.saudemais.api.domain.endereco.Endereco;
 
 public record RecordDadoDetalhamentoMedico(
         Long id,

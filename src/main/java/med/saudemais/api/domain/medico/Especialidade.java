@@ -1,4 +1,4 @@
-package med.saudemais.api.medico;
+package med.saudemais.api.domain.medico;
 
 public enum Especialidade {
 

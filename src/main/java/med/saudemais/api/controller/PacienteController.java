@@ -1,8 +1,10 @@
 package med.saudemais.api.controller;
 
-import med.saudemais.api.paciente.*;
+import med.saudemais.api.domain.paciente.Paciente;
+import med.saudemais.api.domain.paciente.PacienteRepository;
+import med.saudemais.api.domain.paciente.RecordDadosCadastroPaciente;
+import med.saudemais.api.domain.paciente.RecordDadosListagemPacientes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;

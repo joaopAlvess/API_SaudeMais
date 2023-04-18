@@ -1,4 +1,4 @@
-package med.saudemais.api.paciente;
+package med.saudemais.api.domain.paciente;
 
 public record RecordDadosListagemPacientes(
         Long id,

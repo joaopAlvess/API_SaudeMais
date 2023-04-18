@@ -1,7 +1,7 @@
 package med.saudemais.api.controller;
 
 import jakarta.validation.Valid;
-import med.saudemais.api.medico.*;
+import med.saudemais.api.domain.medico.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

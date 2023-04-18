@@ -1,11 +1,11 @@
-package med.saudemais.api.medico;
+package med.saudemais.api.domain.medico;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.saudemais.api.endereco.Endereco;
+import med.saudemais.api.domain.endereco.Endereco;
 
 @Table(name = "medicos")        // Estou definindo o nome da tabela como medicos
 @Entity(name= "Medico")         // Estou falando que a entidade se chama Medico
