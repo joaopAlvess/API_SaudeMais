@@ -1,4 +1,4 @@
-package med.saudemais.api.infra;
+package med.saudemais.api.infra.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
